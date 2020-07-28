@@ -1,0 +1,8 @@
+prefix=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/install
+
+Name: ddynamic_reconfigure
+Description: Description of ddynamic_reconfigure
+Version: 0.3.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lddynamic_reconfigure
+Requires: roscpp dynamic_reconfigure
