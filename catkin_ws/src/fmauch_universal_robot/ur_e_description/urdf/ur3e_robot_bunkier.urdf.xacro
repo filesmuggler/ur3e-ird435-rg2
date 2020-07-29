@@ -1,25 +1,38 @@
 <?xml version="1.0"?>
+<!-- -->
 <robot xmlns:xacro="http://ros.org/wiki/xacro"
   name="ur3e" >
 
   <!-- common stuff -->
   <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
-
+  
   <!-- ur3e -->
   <xacro:include filename="$(find ur_e_description)/urdf/ur3e.urdf.xacro" />
 
-  <!-- arm -->
+  <!-- intel realsense -->
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro">
+	<!--<xacro:arg name="add_plug" value="false"/>-->
+  </xacro:include>  
+
+<!-- arm -->
   <xacro:arg name="kinematics_config" default="$(find ur_e_description)/config/ur3e_default.yaml"/>
   <xacro:ur3e_robot prefix="" joint_limited="false"
     kinematics_file="${load_yaml('$(arg kinematics_config)')}"
   />
+  
+  <link name="d435_link">
+  </link>
 
-  <link name="world" />
-
-  <joint name="world_joint" type="fixed">
-    <parent link="world" />
-    <child link = "base_link" />
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  <joint name="d435_joint" type="fixed">
+    <origin xyz="0 0 0.0" rpy="0 0 0" />
+    <parent link="tool0"/>
+    <child link="d435_link"/>
   </joint>
+  
+  <xacro:sensor_d435 parent="d435_link" name="intel_cam" >
+    <origin xyz="0.0 0.10 0.0" rpy="1.570 -1.570 0"/>
+     <!-- <origin xyz="0.20 0 0" rpy="0 0 0"/> -->
+  </xacro:sensor_d435>
+  
 
 </robot>
