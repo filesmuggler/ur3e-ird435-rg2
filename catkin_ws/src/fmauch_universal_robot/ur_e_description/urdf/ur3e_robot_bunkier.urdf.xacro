@@ -20,17 +20,45 @@
     kinematics_file="${load_yaml('$(arg kinematics_config)')}"
   />
   
+  <link name="connector_link">
+	<visual>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<geometry>
+	    <mesh filename="package://ur_e_description/meshes/3dprint/mocowanie.dae" scale="0.001 0.001 0.001"/>
+	</geometry>
+    </visual>
+    <collision>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<geometry>
+	    <mesh filename="package://ur_e_description/meshes/3dprint/mocowanie.stl" scale="0.001 0.001 0.001"/>
+	</geometry>
+    </collision>
+    <inertial>
+        <!-- The following are not reliable values, and should not be used for modeling -->
+        <mass value="0.1" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="28265492.000000" ixy="-83622.820312" ixz="-1018.753967" iyx="-83622.820312" iyy="10976009.000000" iyz="-92508.718750" izx="-1018.753967" izy="-92508.718750" izz="39048324.000000" />
+      </inertial>
+  </link>
+
+  <joint name="connector_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="tool0"/>
+    <child link="connector_link"/>
+    
+  </joint>
+
   <link name="d435_link">
   </link>
 
   <joint name="d435_joint" type="fixed">
     <origin xyz="0 0 0.0" rpy="0 0 0" />
-    <parent link="tool0"/>
+    <parent link="connector_link"/>
     <child link="d435_link"/>
   </joint>
   
   <xacro:sensor_d435 parent="d435_link" name="intel_cam" >
-    <origin xyz="0.0 0.10 0.0" rpy="1.570 -1.570 0"/>
+    <origin xyz="0.0 0.08 0.0155" rpy="1.570 -1.570 0"/>
      <!-- <origin xyz="0.20 0 0" rpy="0 0 0"/> -->
   </xacro:sensor_d435>
   
