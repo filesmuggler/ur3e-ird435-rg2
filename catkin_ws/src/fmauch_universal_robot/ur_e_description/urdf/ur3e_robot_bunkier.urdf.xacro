@@ -62,5 +62,32 @@
      <!-- <origin xyz="0.20 0 0" rpy="0 0 0"/> -->
   </xacro:sensor_d435>
   
+  <link name="gripper">
+    <visual>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<geometry>
+	    <mesh filename="package://ur_e_description/meshes/rg2_gripper/rg2_.stl" scale="0.001 0.001 0.001"/>
+	</geometry>
+    </visual>
+    <collision>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<geometry>
+	    <mesh filename="package://ur_e_description/meshes/rg2_gripper/rg2_.stl" scale="0.001 0.001 0.001"/>
+	</geometry>
+    </collision>
+    <inertial>
+        <!-- The following are not reliable values, and should not be used for modeling -->
+        <mass value="0.1" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="575346816.000000" ixy="26432.207031" ixz="27110.214844" iyx="26432.207031" iyy="640683008.000000" iyz="143325.546875" izx="27110.214844" izy="143325.546875" izz="116270144.000000" />
+      </inertial>
+  </link>
+
+  <joint name="gripper_joint" type="fixed">
+    <origin xyz="0 0.009 0.055" rpy="0 0 0"/>
+    <parent link="connector_link"/>
+    <child link="gripper"/>
+  </joint>
+
 
 </robot>
