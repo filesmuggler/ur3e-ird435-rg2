@@ -543,6 +543,12 @@ realsense2_description_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/c
 //Value Computed by CMake
 realsense2_description_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/realsense-ros/realsense2_description
 
+//Value Computed by CMake
+realsense_node_python_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/realsense_nodes_python
+
+//Value Computed by CMake
+realsense_node_python_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/realsense_nodes_python
+
 //The directory containing a CMake configuration file for realtime_tools.
 realtime_tools_DIR:PATH=/opt/ros/melodic/share/realtime_tools/cmake
 
@@ -929,7 +935,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=29
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=30
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
