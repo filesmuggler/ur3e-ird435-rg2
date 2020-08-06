@@ -59,8 +59,18 @@
   
   <xacro:sensor_d435 parent="d435_link" name="intel_cam" >
     <origin xyz="0.0 0.08 0.0155" rpy="1.570 -1.570 0"/>
-     <!-- <origin xyz="0.20 0 0" rpy="0 0 0"/> -->
+     <!-- <origin xyz="0.0 0.08 0.0155" rpy="0 0 0"/> -->
   </xacro:sensor_d435>
+
+  <link name="dumb_link">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </link>
+
+  <joint name="dumb_joint" type="fixed">
+    <origin xyz="0 0 0.0" rpy="1.57 0 3.14" />
+    <parent link="d435_link"/>
+    <child link="dumb_link"/>
+  </joint>
   
   <link name="gripper">
     <visual>
