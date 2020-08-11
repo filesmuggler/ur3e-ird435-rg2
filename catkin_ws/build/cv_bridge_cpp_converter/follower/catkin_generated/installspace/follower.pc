@@ -1,0 +1,8 @@
+prefix=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/install
+
+Name: follower
+Description: Description of follower
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp std_msgs message_runtime cv_bridge sensor_msgs

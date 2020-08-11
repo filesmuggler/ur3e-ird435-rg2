@@ -1,0 +1,8 @@
+prefix=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/devel
+
+Name: aruco_bunkier
+Description: Description of aruco_bunkier
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -71,6 +71,16 @@
     <parent link="d435_link"/>
     <child link="dumb_link"/>
   </joint>
+
+  <link name="dumb_link_2">
+    <origin xyz="0.0 0.08 0.0155" rpy="0 0 0"/>
+  </link>
+
+  <joint name="dumb_joint_2" type="fixed">
+    <origin xyz="0 0 0.0" rpy="-1.57 0.0 0.0" />
+    <parent link="dumb_link"/>
+    <child link="dumb_link_2"/>
+  </joint>
   
   <link name="gripper">
     <visual>
