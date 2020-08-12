@@ -8200,6 +8200,24 @@ clean: fmauch_universal_robot/ur_gazebo/CMakeFiles/_run_tests_ur_gazebo_roslaunc
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory ur_rg2_gripper
+
+# Convenience name for "all" pass in the directory.
+ur_rg2_gripper/all:
+
+.PHONY : ur_rg2_gripper/all
+
+# Convenience name for "clean" pass in the directory.
+ur_rg2_gripper/clean:
+
+.PHONY : ur_rg2_gripper/clean
+
+# Convenience name for "preinstall" pass in the directory.
+ur_rg2_gripper/preinstall:
+
+.PHONY : ur_rg2_gripper/preinstall
+
+#=============================================================================
 # Directory level rules for directory fmauch_universal_robot/ur_kinematics
 
 # Convenience name for "all" pass in the directory.

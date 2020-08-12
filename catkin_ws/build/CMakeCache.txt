@@ -868,6 +868,12 @@ ur_msgs_DIR:PATH=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/devel/share/ur_
 ur_msgs_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/fmauch_universal_robot/ur_msgs
 
 //Value Computed by CMake
+ur_rg2_gripper_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/ur_rg2_gripper
+
+//Value Computed by CMake
+ur_rg2_gripper_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/ur_rg2_gripper
+
+//Value Computed by CMake
 ur_robot_driver_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/Universal_Robots_ROS_Driver/ur_robot_driver
 
 //The directory containing a CMake configuration file for ur_robot_driver.
@@ -1025,7 +1031,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=36
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=37
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
