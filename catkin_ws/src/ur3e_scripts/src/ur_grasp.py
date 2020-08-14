@@ -49,6 +49,19 @@ import time
 
 from geometry_msgs.msg import PoseStamped
 
+import cv2
+import numpy as np
+import math as m
+
+
+from std_msgs.msg import Header
+
+from geometry_msgs.msg import Pose, PoseWithCovarianceStamped, Point, Quaternion, Twist
+from nav_msgs.msg import Path, Odometry
+
+from tf.transformations import euler_from_quaternion, quaternion_from_euler
+
+
 
 def all_close(goal, actual, tolerance):
   """
@@ -106,6 +119,8 @@ class MoveGroupPythonIntefaceTutorial(object):
     display_trajectory_publisher = rospy.Publisher('/move_group/display_planned_path',
                                                    moveit_msgs.msg.DisplayTrajectory,
                                                    queue_size=20)
+
+    aruco_pose = rospy.Subscriber('/aruco_pose',Pose,queue_size=10)
 
     ## END_SUB_TUTORIAL
 
@@ -556,17 +571,73 @@ def add_table():
     p.pose.position.z = -0.1
     scene.add_box("table", p, (2.0, 2.0, 0.05))
 
+def myhook():
+    print "shutdown time!"
+
+# def get_aruco_shit():
+#     # Node init 
+#     rospy.init_node('read_tf', anonymous = True)
+#     pub_pose = rospy.Publisher("aruco_pose", Pose, queue_size = 100)
+
+#     my_pose = Pose()
+
+
+#     # Publisher definition
+#     rate = rospy.Rate(30) # 30hz
+
+#     #print("Start node")
+#     rospy.loginfo("TF reader -> is run")
+#     listener = tf.TransformListener()
+#     listener.waitForTransform('/base_link', '/marker_frame', rospy.Time(), rospy.Duration(4.0))
+
+#     try:
+#         while not rospy.is_shutdown():
+
+#             (trans,rot) = listener.lookupTransform('/base_link', '/marker_frame', rospy.Time(0))
+
+            
+#             my_pose.position.x = trans[0]
+#             my_pose.position.y = trans[1]
+#             my_pose.position.z = trans[2]
+
+#             my_pose.orientation.x = rot[0]
+#             my_pose.orientation.y = rot[1]
+#             my_pose.orientation.z = rot[2]
+#             my_pose.orientation.w = rot[3]
+                
+
+#             #my_path.poses.append(pose)
+
+#             #pub_pose.publish(my_pose)
+
+
+#             print("trans: ", trans)  
+#             #callback(trans, rot)
+
+#             # Get data from cameras
+#             rate.sleep()
+        
+
+#         rospy.on_shutdown(myhook)
+#     except:
+#         print("it's over")
+#         print(my_pose)
+
+#     return my_pose
+
 def main():
   try:
-    tutorial = MoveGroupPythonIntefaceTutorial()
-    print "============ Press `Enter` to execute a movement using a pose goal ..."
-    raw_input()
-
     
-    add_table()
-    scan(tutorial)
-    pre_grip_pose(tutorial)
-    #tutorial.go_to_pose_goal(x=0.0789,y=0.448,z=0.15,qx=-0.0,qy=1.0,qz=0.0,qw=-0.0)
+    print "============ Press `Enter` to start listening for aruco ..."
+    raw_input()  
+    
+    # my_pose = get_aruco_shit()
+    # print("hello there")
+    # rospy.sleep(2.0)
+    
+    tutorial = MoveGroupPythonIntefaceTutorial()
+    #print(tutorial.aruco_pose)
+    tutorial.go_to_pose_goal(0.08,0.50,0.10,qx=-0.0,qy=1.0,qz=0.0,qw=-0.0)
     # print "============ Press `Enter` to execute a movement using a joint state ..."
     # raw_input()
     # tutorial.go_to_joint_state()
