@@ -2,4 +2,4 @@
 source_root_dir = '/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src'
 whitelisted_packages = ''.split(';') if '' != '' else []
 blacklisted_packages = ''.split(';') if '' != '' else []
-underlay_workspaces = '/opt/ros/melodic'.split(';') if '/opt/ros/melodic' != '' else []
+underlay_workspaces = '/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/devel;/opt/ros/melodic'.split(';') if '/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/devel;/opt/ros/melodic' != '' else []

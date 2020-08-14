@@ -41,11 +41,13 @@ import rospy
 import moveit_commander
 import moveit_msgs.msg
 import geometry_msgs.msg
-from math import pi
+from math import pi, cos, sin
 from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
 import tf
 import time
+
+from geometry_msgs.msg import PoseStamped
 
 
 def all_close(goal, actual, tolerance):
@@ -213,54 +215,30 @@ class MoveGroupPythonIntefaceTutorial(object):
     current_joints = move_group.get_current_joint_values()
     return all_close(joint_goal, current_joints, 0.01)
 
+  def set_quat_from_axis_angle(self,angle,axis):
+    s = sin(angle/2)
+    x = axis[0] * s
+    y = axis[1] * s
+    z = axis[2] * s
+    w = cos(angle/2)
+    return [x,y,z,w]
 
-  def go_to_pose_goal(self):
+
+  def go_to_pose_goal(self,x,y,z,qx,qy,qz,qw):
     # Copy class variables to local variables to make the web tutorials more clear.
     # In practice, you should use the class variables directly unless you have a good
     # reason not to.
     move_group = self.move_group
-
-    ## BEGIN_SUB_TUTORIAL plan_to_pose
-    ##
-    ## Planning to a Pose Goal
-    ## ^^^^^^^^^^^^^^^^^^^^^^^
-    ## We can plan a motion for this group to a desired pose for the
-    ## end-effector:
     pose_goal = geometry_msgs.msg.Pose()
     
-    
-    # ## euler for plug-in
-    # roll=-1.50
-    # pitch=0.00
-    # yaw=0.0
-    # ## pose for plug-in
-    # pose_goal.position.x = 0.50
-    # pose_goal.position.y = 0.50
-    # pose_goal.position.z = 0.2
+    pose_goal.position.x = x
+    pose_goal.position.y = y
+    pose_goal.position.z = z
 
-    ## euler for unplug
-    # roll=1.50
-    # pitch=0.00
-    # yaw=0.0
-    # ## pose for unplug
-    # pose_goal.position.x = 0.50
-    # pose_goal.position.y = -0.50
-    # pose_goal.position.z = 0.2
-
-    roll=0.0
-    pitch=-0.400
-    yaw=1.570
-    ## pose for unplug
-    pose_goal.position.x = 0.0
-    pose_goal.position.y = 0.0
-    pose_goal.position.z = 0.8
-
-    quaternion = tf.transformations.quaternion_from_euler(roll,pitch,yaw)
-    
-    pose_goal.orientation.x = quaternion[0]
-    pose_goal.orientation.y = quaternion[1]
-    pose_goal.orientation.z = quaternion[2]
-    pose_goal.orientation.w = quaternion[3]
+    pose_goal.orientation.x = qx
+    pose_goal.orientation.y = qy
+    pose_goal.orientation.z = qz
+    pose_goal.orientation.w = qw
     
     move_group.set_pose_target(pose_goal)
 
@@ -511,47 +489,72 @@ class MoveGroupPythonIntefaceTutorial(object):
 def scan(tutorial):
     radian_vector = [0,0,0,0,0,0]
 
-    angle_vector = [100,-155,96,-85,-93,-178]
+    angle_vector = [100,-155,96,-85,-93,180]
     for i in range(len(angle_vector)):
         radian_vector[i] = tutorial.degrees_to_radians(angle_vector[i])
     tutorial.go_to_joint_state_ur3e(radian_vector)
     time.sleep(0.5)
 
-    angle_vector = [90,-155,96,-85,-93,-178]
+    angle_vector = [90,-155,96,-85,-93,180]
     for i in range(len(angle_vector)):
         radian_vector[i] = tutorial.degrees_to_radians(angle_vector[i])
     tutorial.go_to_joint_state_ur3e(radian_vector)
     time.sleep(0.5)
 
-    angle_vector = [80,-155,96,-85,-93,-178]
+    angle_vector = [80,-155,96,-85,-93,180]
     for i in range(len(angle_vector)):
         radian_vector[i] = tutorial.degrees_to_radians(angle_vector[i])
     tutorial.go_to_joint_state_ur3e(radian_vector)
     time.sleep(0.5)
 
-    angle_vector = [70,-155,96,-85,-93,-178]
+    angle_vector = [70,-155,96,-85,-93,180]
     for i in range(len(angle_vector)):
         radian_vector[i] = tutorial.degrees_to_radians(angle_vector[i])
     tutorial.go_to_joint_state_ur3e(radian_vector)
     time.sleep(0.5)
 
-    angle_vector = [60,-155,96,-85,-93,-178]
+    angle_vector = [60,-155,96,-85,-93,180]
     for i in range(len(angle_vector)):
         radian_vector[i] = tutorial.degrees_to_radians(angle_vector[i])
     tutorial.go_to_joint_state_ur3e(radian_vector)
     time.sleep(0.5)
 
-    angle_vector = [50,-155,96,-85,-93,-178]
+    angle_vector = [50,-155,96,-85,-93,180]
     for i in range(len(angle_vector)):
         radian_vector[i] = tutorial.degrees_to_radians(angle_vector[i])
     tutorial.go_to_joint_state_ur3e(radian_vector)
     time.sleep(0.5)
 
-    angle_vector = [40,-155,96,-85,-93,-178]
+    angle_vector = [40,-155,96,-85,-93,180]
     for i in range(len(angle_vector)):
         radian_vector[i] = tutorial.degrees_to_radians(angle_vector[i])
     tutorial.go_to_joint_state_ur3e(radian_vector)
     time.sleep(0.5)
+
+def pre_grip_pose(tutorial):
+    radian_vector = [0,0,0,0,0,0]
+
+    angle_vector = [90,-90,90,-90,-90,180]
+    for i in range(len(angle_vector)):
+        radian_vector[i] = tutorial.degrees_to_radians(angle_vector[i])
+    tutorial.go_to_joint_state_ur3e(radian_vector)
+    time.sleep(0.5)
+
+def add_table():
+    scene = moveit_commander.PlanningSceneInterface()
+    robot = moveit_commander.RobotCommander()
+
+    rospy.sleep(2)
+
+    p = PoseStamped()
+    p.header.frame_id = robot.get_planning_frame()
+    
+
+    p.pose.position.x = 0.0
+    p.pose.position.y = 0.0
+
+    p.pose.position.z = -0.1
+    scene.add_box("table", p, (2.0, 2.0, 0.05))
 
 def main():
   try:
@@ -559,8 +562,11 @@ def main():
     print "============ Press `Enter` to execute a movement using a pose goal ..."
     raw_input()
 
-    scan(tutorial)
     
+    add_table()
+    scan(tutorial)
+    pre_grip_pose(tutorial)
+    tutorial.go_to_pose_goal(x=0.0789,y=0.448,z=0.15,qx=-0.0,qy=1.0,qz=0.0,qw=-0.0)
     # print "============ Press `Enter` to execute a movement using a joint state ..."
     # raw_input()
     # tutorial.go_to_joint_state()

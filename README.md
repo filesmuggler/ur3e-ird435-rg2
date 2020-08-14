@@ -32,3 +32,8 @@ change frames for ur3e in aruco files
 subscribe to aruco position
 
 
+```
+rosrun tf tf_echo /base_link /marker_frame
+```
+
+

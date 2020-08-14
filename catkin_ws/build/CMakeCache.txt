@@ -357,6 +357,12 @@ aruco_detect_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/b
 aruco_detect_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/fiducials/aruco_detect
 
 //Value Computed by CMake
+aruco_intercept_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/aruco_intercept
+
+//Value Computed by CMake
+aruco_intercept_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/aruco_intercept
+
+//Value Computed by CMake
 aruco_msgs_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/aruco_ros/aruco_msgs
 
 //The directory containing a CMake configuration file for aruco_msgs.
@@ -379,6 +385,12 @@ bond_DIR:PATH=/opt/ros/melodic/share/bond/cmake
 
 //The directory containing a CMake configuration file for bondcpp.
 bondcpp_DIR:PATH=/opt/ros/melodic/share/bondcpp/cmake
+
+//Value Computed by CMake
+box_collide_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/box_collide
+
+//Value Computed by CMake
+box_collide_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/box_collide
 
 //The directory containing a CMake configuration file for camera_calibration_parsers.
 camera_calibration_parsers_DIR:PATH=/opt/ros/melodic/share/camera_calibration_parsers/cmake
@@ -1049,7 +1061,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=40
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=42
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

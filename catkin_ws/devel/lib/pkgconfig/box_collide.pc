@@ -1,0 +1,8 @@
+prefix=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/devel
+
+Name: box_collide
+Description: Description of box_collide
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
