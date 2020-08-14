@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!-- -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+  name="ur3e" >
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
+  
+  <!-- ur3e -->
+  <xacro:include filename="$(find ur_e_description)/urdf/ur3e.urdf.xacro" />
+
+  <!-- intel realsense -->
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro">
+	<!--<xacro:arg name="add_plug" value="false"/>-->
+  </xacro:include>  
+
+<!-- arm -->
+  <xacro:arg name="kinematics_config" default="$(find ur_e_description)/config/ur3e_default.yaml"/>
+  <xacro:ur3e_robot prefix="" joint_limited="false"
+    kinematics_file="${load_yaml('$(arg kinematics_config)')}"
+  />
+  
+  <link name="connector_link">
+	<visual>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<geometry>
+	    <mesh filename="package://ur_e_description/meshes/3dprint/mocowanie_cienkie.stl" scale="0.001 0.001 0.001"/>
+	</geometry>
+    </visual>
+    <collision>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<geometry>
+	    <mesh filename="package://ur_e_description/meshes/3dprint/mocowanie_cienkie.stl" scale="0.001 0.001 0.001"/>
+	</geometry>
+    </collision>
+    <inertial>
+        <!-- The following are not reliable values, and should not be used for modeling -->
+        <mass value="0.1" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="28265492.000000" ixy="-83622.820312" ixz="-1018.753967" iyx="-83622.820312" iyy="10976009.000000" iyz="-92508.718750" izx="-1018.753967" izy="-92508.718750" izz="39048324.000000" />
+      </inertial>
+  </link>
+
+  <joint name="connector_joint" type="fixed">
+    <origin xyz="0 -0.01 -0.001" rpy="0 0 3.140" />
+    <parent link="tool0"/>
+    <child link="connector_link"/>
+    
+  </joint>
+
+  <link name="d435_link">
+  </link>
+
+  <joint name="d435_joint" type="fixed">
+    <origin xyz="0 0 0.0" rpy="0 0 0" />
+    <parent link="connector_link"/>
+    <child link="d435_link"/>
+  </joint>
+  
+  <xacro:sensor_d435 parent="d435_link" name="intel_cam" >
+    <origin xyz="0.0 0.065 0.013" rpy="1.570 -1.570 3.140"/>
+     <!-- <origin xyz="0.0 0.08 0.0155" rpy="0 0 0"/> -->
+  </xacro:sensor_d435>
+
+  <link name="dumb_link">
+    <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </link>
+
+  <joint name="dumb_joint" type="fixed">
+    <origin xyz="0 0 0.0" rpy="1.57 0 3.14" />
+    <parent link="d435_link"/>
+    <child link="dumb_link"/>
+  </joint>
+
+  <link name="dumb_link_2">
+    <origin xyz="0.0 0.08 0.0155" rpy="0 0 0"/>
+  </link>
+
+  <joint name="dumb_joint_2" type="fixed">
+    <origin xyz="0 0 0.0" rpy="-1.57 0.0 0.0" />
+    <parent link="dumb_link"/>
+    <child link="dumb_link_2"/>
+  </joint>
+  
+  <link name="gripper">
+    <visual>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<geometry>
+	    <mesh filename="package://ur_e_description/meshes/soft_gripper/soft_gripper.stl" scale="0.01 0.01 0.01"/>
+	</geometry>
+    </visual>
+    <collision>
+	<origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+	<geometry>
+	    <mesh filename="package://ur_e_description/meshes/soft_gripper/soft_gripper.stl" scale="0.01 0.01 0.01"/>
+	</geometry>
+    </collision>
+    <inertial>
+        <!-- The following are not reliable values, and should not be used for modeling -->
+        <mass value="0.5" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="28104.226562" ixy="-0.002895" ixz="1576.262695" iyx="-0.002895" iyy="26748.089844" iyz="-0.000900" izx="1576.262695" izy="-0.000900" izz="23341.699219" />
+      </inertial>
+  </link>
+
+  <joint name="gripper_joint" type="fixed">
+    <origin xyz="0.055 0.075 0.0" rpy="0 0 1.57"/>
+    <parent link="connector_link"/>
+    <child link="gripper"/>
+  </joint>
+
+
+</robot>

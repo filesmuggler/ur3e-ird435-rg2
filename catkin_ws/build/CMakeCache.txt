@@ -772,6 +772,24 @@ ur3e_d435_rg2_moveit_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/cat
 ur3e_d435_rg2_moveit_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/fmauch_universal_robot/ur3e_d435_rg2_moveit
 
 //Value Computed by CMake
+ur3e_d435_sg_moveit_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/fmauch_universal_robot/ur3e_d435_sg_moveit
+
+//Value Computed by CMake
+ur3e_d435_sg_moveit_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/fmauch_universal_robot/ur3e_d435_sg_moveit
+
+//Value Computed by CMake
+ur3e_d435_soft_gripper_moveit_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/fmauch_universal_robot/ur3e_d435_soft_gripper_moveit
+
+//Value Computed by CMake
+ur3e_d435_soft_gripper_moveit_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/fmauch_universal_robot/ur3e_d435_soft_gripper_moveit
+
+//Value Computed by CMake
+ur3e_scripts_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/ur3e_scripts
+
+//Value Computed by CMake
+ur3e_scripts_SOURCE_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/src/ur3e_scripts
+
+//Value Computed by CMake
 ur5_e_moveit_config_BINARY_DIR:STATIC=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/build/fmauch_universal_robot/ur5_e_moveit_config
 
 //Value Computed by CMake
@@ -1031,7 +1049,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=37
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=40
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

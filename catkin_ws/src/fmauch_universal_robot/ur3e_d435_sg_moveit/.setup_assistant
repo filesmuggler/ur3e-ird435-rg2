@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ur_e_description
+    relative_path: urdf/ur3e_robot_bunkier_soft_gripper.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/ur3e.srdf
+  CONFIG:
+    author_name: Krzysztof Stezala
+    author_email: krzysztof.stezala@student.put.poznan.pl
+    generated_timestamp: 1597345403

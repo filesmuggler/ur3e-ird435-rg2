@@ -1,0 +1,8 @@
+prefix=/home/krzysztof/Repos/ur3e-ird435-rg2/catkin_ws/install
+
+Name: ur3e_scripts
+Description: Description of ur3e_scripts
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
